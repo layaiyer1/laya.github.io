@@ -64,19 +64,48 @@
             align-items: center;
             justify-content: center;
             box-shadow: 8px 8px 0 var(--shadow);
+            position: relative;
+            overflow: hidden;
         }
         .pinwheel-box.small {
             width: 140px; height: 140px;
             border-radius: 28px;
             box-shadow: 6px 6px 0 var(--shadow);
         }
+        .pinwheel-wrapper {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            height: 100%;
+        }
         .pinwheel-img {
-            width: 70%; height: 70%;
+            width: 90px; height: 90px;
             object-fit: contain;
             animation: spin 2.5s linear infinite;
+            position: relative;
+            z-index: 2;
         }
         .pinwheel-box.small .pinwheel-img {
+            width: 70px; height: 70px;
             animation-duration: 4s;
+        }
+        .pinwheel-rod {
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 8px;
+            height: 65px;
+            background: var(--yellow);
+            border-radius: 0 0 4px 4px;
+            z-index: 1;
+        }
+        .pinwheel-box.small .pinwheel-rod {
+            width: 6px;
+            height: 50px;
         }
         @keyframes spin {
             from { transform: rotate(0deg); }
@@ -368,7 +397,10 @@
     <div class="loading-screen" id="loadingScreen">
         <h1 class="loading-name">Laya Iyer</h1>
         <div class="pinwheel-box">
-            <img src="pinwheel.png" alt="Pinwheel" class="pinwheel-img" onerror="this.style.display='none'">
+            <div class="pinwheel-wrapper">
+                <img src="pinwheel.png" alt="Pinwheel" class="pinwheel-img" onerror="this.style.display='none'">
+                <div class="pinwheel-rod"></div>
+            </div>
         </div>
         <div class="loading-bar-container">
             <div class="loading-bar"></div>
@@ -382,7 +414,10 @@
             <aside class="sidebar">
                 <div class="sidebar-top">
                     <div class="pinwheel-box small">
-                        <img src="pinwheel.png" alt="Pinwheel" class="pinwheel-img" onerror="this.style.display='none'">
+                        <div class="pinwheel-wrapper">
+                            <img src="pinwheel.png" alt="Pinwheel" class="pinwheel-img" onerror="this.style.display='none'">
+                            <div class="pinwheel-rod"></div>
+                        </div>
                     </div>
 
                     <h1 class="hero-name">Laya Iyer</h1>
