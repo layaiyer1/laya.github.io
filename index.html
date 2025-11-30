@@ -608,6 +608,20 @@
 
         function updateActiveNav() {
             var scrollY = window.scrollY;
+            var windowHeight = window.innerHeight;
+            var documentHeight = document.documentElement.scrollHeight;
+            
+            // Check if we're at the bottom of the page
+            if (scrollY + windowHeight >= documentHeight - 50) {
+                navLinks.forEach(function(link) {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href') === '#contact') {
+                        link.classList.add('active');
+                    }
+                });
+                return;
+            }
+            
             sections.forEach(function(section) {
                 var sectionTop = section.offsetTop - 150;
                 var sectionHeight = section.offsetHeight;
